@@ -2,20 +2,28 @@ const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
 
-// middlewares
+//todo middlewares
 const { verifyToken } = require("../middlewres/jwt.middleware");
 const authorizeRole = require("../middlewres/role.middleware");
 
-// controllers
-const { register, verifyEmail } = require("../controllers/user.controller");
+//todo controllers
+const {
+  register,
+  verifyEmail,
+  login,
+} = require("../controllers/user.controller");
 
-// endpoint : http://localhost:4000/api/v1/user/register
+//todo: register new user
+//* endpoint : http://localhost:4000/api/v1/user/register
 router.post("/register", register);
 
-//* verify email route
-//* endpoint http://localhost:4000/verify-email?token=xyz
-
+//todo: verify email route
+//* endpoint : http://localhost:4000/verify-email?token=xyz
 router.get("/verify-email", verifyEmail);
+
+//todo: login existing user
+//* endpoint : http://localhost:4000/api/v1/user/login
+router.post("/login", verifyToken, authorizeRole(["customer"]), login);
 
 router.get(
   "/protected",
