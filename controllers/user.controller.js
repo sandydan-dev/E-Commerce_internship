@@ -213,7 +213,6 @@ const userDetails = async (req, res) => {
 };
 
 // logout
-
 const logout = async (req, res) => {
   try {
     // Clear the cookie containing the token
@@ -229,7 +228,7 @@ const logout = async (req, res) => {
   }
 };
 
-// reset passowd
+// reset request password
 const requestResetPassword = async (req, res) => {
   // extract the email from the body
   const { email } = req.body;
@@ -272,6 +271,7 @@ const requestResetPassword = async (req, res) => {
   }
 };
 
+// reset password
 const resetPassword = async (req, res) => {
   const { token } = req.query; // extract the token from the query parameter
   const { newPassword } = req.body; // adding new password from the body
