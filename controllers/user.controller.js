@@ -37,15 +37,16 @@ const register = async (req, res) => {
       password: hashedPassword,
     });
 
-    // Generate random token
+    // Generate random token for email verification
     const emailToken = crypto.randomBytes(32).toString("hex");
 
     // Attach token and expiry to user
-    user.emailToken = emailToken;
+    user.emailToken = emailToken; // add random token
 
+    // generate link to email verification
     const verificationLink = `http://localhost:4000/api/v1/user/verify-email?token=${emailToken}`;
 
-    const subject = "Welcome! Please Verify Your Email";
+    const subject = `Welcome! ${user.name} Please Verify Your Email`;
 
     const html = `
         <h2>Hi ${user.name},</h2>
@@ -57,8 +58,9 @@ const register = async (req, res) => {
         <p>— The Team</p>
       `;
 
-    console.log("📧 Sending email to:", user.email);
+    console.log("📧 Sending email to:", user.email); // debugging to check sending emial
 
+    // if email missing
     if (!user.email) {
       throw new Error("Email is missing — can't send email.");
     }
@@ -69,17 +71,20 @@ const register = async (req, res) => {
       throw new Error("No email address found for user.");
     }
 
-    // mail details for receiver
+    // send email details for receiver
     await sendEmail({ to: user.email, subject, html });
 
+    // save user data to database
     const saveUser = await user.save();
 
+    // return if all things are good
     return res.status(201).json({
       message: "User created successfully",
       user: saveUser,
     });
   } catch (error) {
     console.log(error);
+    // if there is an error while seeding data, then return error and register again
     return res.status(500).json({
       message: "Error while creating new user",
       error: error.message,
@@ -89,11 +94,11 @@ const register = async (req, res) => {
 
 //* verify email
 const verifyEmail = async (req, res) => {
-  const { token } = req.query; // extract the token from query
+  const { token } = req.query; // extract the random token from query
 
-  console.log("Received token:", token);
+  console.log("Received token:", token); // debugging token
 
-  // check if token is provided
+  // check if token is not provided
   if (!token) {
     return res
       .status(400)
@@ -105,8 +110,9 @@ const verifyEmail = async (req, res) => {
     emailToken: token,
   });
 
-  console.log("Found user:", user);
+  console.log("Found user:", user); // debugging user if found
 
+  // if random token not found
   if (!user) {
     return res
       .status(400)
@@ -120,21 +126,24 @@ const verifyEmail = async (req, res) => {
   // save status to database
   await user.save();
 
+  // return success
   return res.send("✅ Email verified successfully! You can now log in.");
 };
 
 // login existing user
 const login = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { email, password } = req.body; // extract the data from the database if user register
 
+    // validation for both fields
     if (!email || !password) {
       return res.status(400).json({ message: "Both field are required" });
     }
 
-    // find email if exist
+    // find email if exists
     const user = await User.findOne({ email });
 
+    // if user details not found, throw an error and register first
     if (!user) {
       return res
         .status(404)
@@ -142,13 +151,14 @@ const login = async (req, res) => {
     }
 
     // compare the hashed password
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = await bcrypt.compare(password, user.password); // this.password check the password from the database
 
+    // if password not matched throw an error
     if (!isMatch) {
       return res.status(401).json({ message: "Invalid Password" });
     }
 
-    // generate the token
+    // generate the token and extract the neccessary data
     const token = generateToken({
       id: user._id,
       email: user.email,
@@ -166,10 +176,12 @@ const login = async (req, res) => {
     // also set token in headers
     res.setHeader("Authorization", `Bearer ${token}`);
 
+    // return success if credentials matched
     return res
       .status(200)
       .json({ message: "User logged in success", user, token });
   } catch (error) {
+    // return error if server is down
     return res.status(500).json({ message: "Error while login ", error });
   }
 };
@@ -177,5 +189,5 @@ const login = async (req, res) => {
 module.exports = {
   register,
   verifyEmail,
-  login
+  login,
 };
