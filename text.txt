@@ -1,0 +1,163 @@
+Core Models
+User Model – Stores customer/admin details and authentication.
+
+Product Model – Holds product details, pricing, stock, and images.
+
+Category Model – Groups products into categories.
+
+Order Model – Tracks purchases and order status.
+
+OrderItem Model – Manages individual items within an order.
+
+Cart Model – Stores products that users add to their shopping cart.
+
+Wishlist Model – Saves products that users want to purchase later.
+
+Payment Model – Handles transaction details for orders.
+
+Review Model – Allows customers to leave ratings and reviews for products.
+
+Inventory Model – Tracks stock levels for better inventory management.
+
+Advanced Models
+Coupon Model – Stores discount codes for promotions.
+
+Address Model – Manages user shipping and billing addresses.
+
+Shipment Model – Tracks delivery and shipment status.
+
+Refund Model – Handles returns and refunds for orders.
+
+Notification Model – Manages notifications for users (order updates, promotions).
+
+Subscription Model – Manages recurring payments for memberships or premium services.
+
+Vendor Model – Stores details of third-party sellers who list products on the platform.
+
+Affiliate Model – Tracks referral programs where users earn commissions for sales.
+
+ReturnRequest Model – Handles customer requests for product returns.
+
+Exchange Model – Allows customers to swap purchased items for alternatives.
+
+Scalability & Marketplace Models
+GiftCard Model – Stores gift card codes and balance details.
+
+LoyaltyPoints Model – Manages customer reward points for purchases.
+
+Analytics Model – Stores metrics like user activity, product views, and revenue trends.
+
+Chat Model – Handles real-time customer support conversations.
+
+SupportTicket Model – Tracks complaints and support requests from customers.
+
+Promotion Model – Stores banners, discounts, and seasonal sale campaigns.
+
+DeliveryPartner Model – Manages third-party courier services for order fulfillment.
+
+StockTransfer Model – Tracks inventory movement between warehouses or vendors.
+
+FraudDetection Model – Flags suspicious transactions and prevents fraudulent orders.
+
+Tax Model – Calculates sales tax based on customer location and product category.
+
+E-Commerce Enhancements
+MultiCurrency Model – Supports international transactions with different currencies.
+
+GeoLocation Model – Tracks user location for better shipping & region-based pricing.
+
+Supplier Model – Manages product suppliers & their inventory contributions.
+
+BundleDeal Model – Allows products to be grouped for special pricing.
+
+FlashSale Model – Handles limited-time offers and discounts on products.
+
+Auction Model – Enables users to bid on items in an auction-style format.
+
+Invoice Model – Generates invoices for purchases.
+
+FraudReport Model – Tracks reports on suspicious transactions or accounts.
+
+Waitlist Model – Allows users to register interest in out-of-stock products.
+
+SMSVerification Model – Handles phone number verification via OTP.
+
+Personalization & User Engagement
+StoreCredit Model – Maintains credit balance users can spend in the store.
+
+FeedbackSurvey Model – Stores customer responses on shopping experiences.
+
+GiftRegistry Model – Allows customers to create and share registries for events.
+
+PackagingPreference Model – Stores customer choices for eco-friendly packaging.
+
+ShipmentTracking Model – Provides real-time updates on delivery status.
+
+StoreRating Model – Tracks user ratings for different vendors or sellers.
+
+ProductComparison Model – Allows customers to compare multiple products side by side.
+
+DynamicPricing Model – Adjusts prices automatically based on demand, season, or inventory.
+
+LocationBasedOffers Model – Provides location-specific discounts and promotions.
+
+Crowdfunding Model – Enables users to contribute to product development before launch.
+
+Advanced E-Commerce Features
+EarlyAccess Model – Grants premium users access to newly launched products before others.
+
+ReferralTracking Model – Logs user referrals and calculates bonuses.
+
+CustomerSegmentation Model – Classifies users into different buying behavior categories.
+
+LiveAuction Model – Supports real-time bidding for products in an auction.
+
+InfluencerAffiliate Model – Tracks influencer-generated sales through promotions.
+
+CustomOrder Model – Allows customers to personalize products before purchase.
+
+ProductExpiration Model – Tracks expiry dates for perishable items and food products.
+
+InventoryRestock Model – Predicts when stock should be refilled based on sales trends.
+
+SplitPayment Model – Allows multiple users to pay for a product together.
+
+UserInterests Model – Stores user preferences for personalized recommendations.
+
+
+
+1. User Management
+✅ User Registration & Authentication (JWT-based) ✅ Role-based Access Control (Admin, Seller, Customer) ✅ Password Reset & Email Verification ✅ User Profile Management
+
+2. Product Management
+✅ Add, Update, Delete & Fetch Products ✅ Categories & Subcategories ✅ Product Variants (Size, Color, etc.) ✅ Stock & Inventory Tracking ✅ Product Reviews & Ratings
+
+3. Order & Cart System
+✅ Add Items to Cart & Update Quantities ✅ Checkout Process ✅ Order Placement & Tracking ✅ Order Cancellation & Refunds
+
+4. Payment Integration
+✅ Payment Gateways (Stripe, Razorpay, PayPal) ✅ Secure Payment Processing ✅ Invoice Generation
+
+5. Shipping & Delivery
+✅ Address Management for Users ✅ Order Fulfillment & Shipping Tracking ✅ Delivery Status Updates
+
+6. Admin Dashboard
+✅ Product & Order Analytics ✅ User & Order Management ✅ Discount & Coupon Management
+
+7. Wishlist & Recommendations
+✅ Users Can Save Products for Later ✅ Personalized Recommendations
+
+8. Notification System
+✅ Email Notifications (Order Updates, Promotions) ✅ SMS/Push Notifications
+
+9. Security & Authentication
+✅ Secure API Routes with JWT Authentication ✅ Password Encryption & Data Protection ✅ Preventing SQL Injection, XSS, CSRF Attacks
+
+10. Reviews & Ratings
+✅ Users Can Write & Edit Reviews ✅ Star Rating System
+
+11. Coupons & Discounts
+✅ Apply Promo Codes at Checkout ✅ Percentage-based & Fixed Discounts
+
+12. Logging & Monitoring
+✅ API Logging for Debugging ✅ Error Tracking (using tools like Sentry)
