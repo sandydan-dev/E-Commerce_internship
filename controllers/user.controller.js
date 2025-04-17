@@ -1,5 +1,7 @@
 const User = require("../models/User.model");
 const bcrypt = require("bcrypt");
+const crypto = require("crypto");
+const jwt = require("jsonwebtoken");
 const sendEmail = require("../utils/mail.util");
 const { generateToken } = require("../middlewres/jwt.middleware");
 
@@ -37,6 +39,7 @@ const register = async (req, res) => {
       password: hashedPassword,
     });
 
+   
     // generate the token
     const token = generateToken({
       id: user._id,
@@ -52,11 +55,16 @@ const register = async (req, res) => {
       maxAge: 365 * 24 * 60 * 60 * 1000, // 1 year
     });
 
+     // Generate random token
+     const emailToken = crypto.randomBytes(32).toString("hex");
+
+    // Attach token and expiry to user
+    user.emailToken = emailToken;
+
     // also set token in headers
     res.setHeader("Authorization", `Bearer ${token}`);
 
-
-    const verificationLink = `http://localhost:4000/verify-email?token=${token}`;
+    const verificationLink = `http://localhost:4000/api/v1/user/verify-email?token=${emailToken}`;
 
     const subject = "Welcome! Please Verify Your Email";
 
@@ -101,6 +109,44 @@ const register = async (req, res) => {
   }
 };
 
+// verify email
+
+const verifyEmail = async (req, res) => {
+  const { token } = req.query;  // extract the token from query
+
+  console.log("Received token:", token);
+
+
+  // check if token is provided
+  if (!token) {
+    return res
+      .status(400)
+      .json({ message: "Verification random token is missing" });
+  }
+
+  // find the user token
+  const user = await User.findOne({
+    emailToken: token,
+  });
+
+  console.log("Found user:", user);
+
+
+  if (!user) {
+    return res.status(400).json({ message: "Invalid token, token expiered after verified" });
+  }
+
+  // update the user status to verified 
+  user.isVerified = true; // mark as verified
+  user.emailToken = undefined; // remove the token when successfull verification
+
+  // save status to database
+  await user.save();
+
+  return res.send("✅ Email verified successfully! You can now log in.");
+};
+
 module.exports = {
   register,
+  verifyEmail,
 };
