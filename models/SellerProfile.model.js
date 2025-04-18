@@ -43,8 +43,3 @@ const SellerProfile = mongoose.model("SellerProfile", sellerProfileSchema);
 
 module.exports = SellerProfile;
 
-// if (!sellerProfile.verified) {
-//   return res
-//     .status(403)
-//     .json({ message: "Your seller profile is not yet verified." });
-// }

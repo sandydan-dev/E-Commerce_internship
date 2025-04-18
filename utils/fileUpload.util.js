@@ -24,6 +24,31 @@ const fileFilter = (req, file, cb) => {
     cb(new Error("Only images are allowed (jpeg, jpg, png, webp)")); // reject file
   }
 };
+// upload multiple images
+const getMulterFileUpload = (folder = "uploads") => {
+  const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, folder);
+    },
+    filename: (req, file, cb) => {
+      cb(null, Date.now() + path.extname(file.originalname)); // unique file name
+    },
+  });
+
+  // for single image file
+  // const sellerUpload = getMulterUploader("uploads/sellers");
+  // sellerUpload.single("shoplogo"),
+
+  // for multiple image file
+  // const productUpload = getMulterUploader("uploads/products");
+  // productUpload.array("images", 5), // up to 5 images
+
+  return multer({
+    storage,
+    fileFilter,
+    limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
+  });
+};
 
 const upload = multer({
   storage,
@@ -40,4 +65,4 @@ const multerErrorHandler = (err, req, res, next) => {
   next();
 };
 
-module.exports = { upload, multerErrorHandler };
+module.exports = { upload, getMulterFileUpload, multerErrorHandler };

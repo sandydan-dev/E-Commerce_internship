@@ -97,6 +97,7 @@ const sellerVerifiedList = async (req, res) => {
   }
 };
 
+
 module.exports = {
   verifySellerProfile,
   sellerNotVerifiedList,
