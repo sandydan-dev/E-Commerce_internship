@@ -196,15 +196,16 @@ const updateProductStatus = async (req, res) => {
       .json({ message: "Product status updated", product: updateStatus });
   } catch (error) {
     console.error("Error while updating product status:", error);
-
+    
     return res
-      .status(500)
-      .json({ message: "Error while Product status updated", error: error });
-  }
+    .status(500)
+    .json({ message: "Error while Product status updated", error: error });
+}
 };
 
-// advanced filter product
 
+// advanced filter product
+// GET /api/v1/products/search?category=Electronics&minPrice=1000&maxPrice=5000&sort=price_asc
 const filterProducts = async (req, res) => {
   try {
     // extract query from the url
@@ -301,7 +302,7 @@ const filterProducts = async (req, res) => {
   }
 };
 
-// GET /api/v1/products/search?category=Electronics&minPrice=1000&maxPrice=5000&sort=price_asc
+
 
 
 module.exports = {
@@ -324,7 +325,7 @@ module.exports = {
 
 // Product approval process for admin to moderate content. 📌
 
-// Bulk product management (upload, update).
+// Bulk product management (upload, update).  📌
 
 // Reporting and exporting product data.
 

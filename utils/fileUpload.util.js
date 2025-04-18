@@ -35,13 +35,6 @@ const getMulterFileUpload = (folder = "uploads") => {
     },
   });
 
-  // for single image file
-  // const sellerUpload = getMulterUploader("uploads/sellers");
-  // sellerUpload.single("shoplogo"),
-
-  // for multiple image file
-  // const productUpload = getMulterUploader("uploads/products");
-  // productUpload.array("images", 5), // up to 5 images
 
   return multer({
     storage,
