@@ -71,6 +71,9 @@ This is a backend project for an e-commerce platform built using Node.js and Exp
 ## Create review for product
 ![Image](https://github.com/user-attachments/assets/9417c595-ca2c-421e-a7e0-010c0ca5eadf)
 
+## All reviews list
+![Image](https://github.com/user-attachments/assets/7e5447c2-e690-416f-8aac-2e0e118021e4)
+
 ## Install dependencies:
 npm install
 
