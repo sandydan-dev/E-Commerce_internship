@@ -50,6 +50,8 @@ This is a backend project for an e-commerce platform built using Node.js and Exp
 ## New user register/signup
 ![Image](https://github.com/user-attachments/assets/d1e0de90-7bd3-46f2-bf23-a73a07f8ddd9)
 
+## Login User
+![Image](https://github.com/user-attachments/assets/a008f909-9658-4ccd-8644-0b40b15a7e4a)
 
 
 ## Install dependencies:
