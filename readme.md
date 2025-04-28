@@ -47,7 +47,8 @@ This is a backend project for an e-commerce platform built using Node.js and Exp
    - Protects endpoints by limiting the number of requests from a user in a specified time window to avoid abuse.
 
 
-
+## New user register/signup
+![Image](https://github.com/user-attachments/assets/d1e0de90-7bd3-46f2-bf23-a73a07f8ddd9)
 
 
 
