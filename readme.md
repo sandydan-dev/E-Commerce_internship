@@ -1,5 +1,13 @@
 # E-Commerce Backend Project
 
+- *COMPANY* : CODETECH IT SOLUTIONS
+- *NAME* : Sandeep Dhanwate
+- *INTERN ID* : CT06DA679
+- *DOMAIN* : Backend Web Development
+- *DURATION* : 6 WEEK
+- *MENTOR* : NEELA SANTOSH
+
+
 This is a backend project for an e-commerce platform built using Node.js and Express. It includes features like user authentication, role-based access control, product management, order management, seller profiles, and review systems. The project is designed to handle different roles such as customers, sellers, and admins, each having specific access to different resources in the system.
 
 ## Features
@@ -37,6 +45,8 @@ This is a backend project for an e-commerce platform built using Node.js and Exp
 
 8. **Rate Limiting:**
    - Protects endpoints by limiting the number of requests from a user in a specified time window to avoid abuse.
+
+
 
 
 
