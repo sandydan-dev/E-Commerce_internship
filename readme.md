@@ -62,6 +62,9 @@ This is a backend project for an e-commerce platform built using Node.js and Exp
 ## Order create
 ![Image](https://github.com/user-attachments/assets/f89c3406-777e-4c54-aacc-78863bbed55a)
 
+## Seller Profile
+![Image](https://github.com/user-attachments/assets/87bb03cd-4b21-424d-9b87-0f7ee8088aee)
+
 ## Install dependencies:
 npm install
 
