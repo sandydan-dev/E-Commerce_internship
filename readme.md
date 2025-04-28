@@ -56,6 +56,10 @@ This is a backend project for an e-commerce platform built using Node.js and Exp
 ## New product create
 ![Image](https://github.com/user-attachments/assets/f0752fde-9bbe-4317-b03b-6798b232ee08)
 
+## Product List
+![Image](https://github.com/user-attachments/assets/3d09bfd6-af12-49b3-b02b-c15106b1e0ef)
+
+
 ## Install dependencies:
 npm install
 
